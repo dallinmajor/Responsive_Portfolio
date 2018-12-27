@@ -77,7 +77,10 @@
                                     <span class="date">25 Nov 2018</span>
                                     <a href="https://github.com/dallinmajor/mymymadlibz"><i class="fa fa-github" style="font-size: 1.5rem"></i></a>
                                     <h4><a href="https://dallinmajor.github.io/mymymadlibz/">MyLibs</a></h4>
-                                    <p>I wrote this project for two reasons: get another React app on Github pages and use RegEx in a project. I wrote the whole app in about 3hrs, but it took me another hour or two getting the react/Github hosting problems solved. The solution was the gh-pages node module.</p>
+                                    <p>I wrote this project for two reasons: get another React app on Github pages and
+                                        use RegEx in a project. I wrote the whole app in about 3hrs, but it took me
+                                        another hour or two getting the react/Github hosting problems solved. The
+                                        solution was the gh-pages node module.</p>
                                 </div>
                             </div>
                         </div>
@@ -95,7 +98,8 @@
                                         <i class="fa fa-github" style="font-size: 1.5rem"></i></a>
                                     <h4><a href="#">Plantsy</a></h4>
                                     <p>I wrote a backend API for a project that never made it off the ground. It
-                                        currently isn't hosted any where, but the API works as well as several of the other
+                                        currently isn't hosted any where, but the API works as well as several of the
+                                        other
                                         features I wrote.</p>
                                 </div>
                             </div>
@@ -111,7 +115,10 @@
                                 <div class="inside">
                                     <span class="date">8 Sept 2018</span>
                                     <a href='https://github.com/dallinmajor/MemoryGame'><i class="fa fa-github" style="font-size: 1.5rem"></i></a>
-                                    <h4>This was the first app I wrote after learning React. It is a memory game that shuffles images. The main challenge for me was writting code that would shuffle the an array.</h4></p>
+                                    <h4>This was the first app I wrote after learning React. It is a memory game that
+                                        shuffles images. The main challenge for me was writting code that would shuffle
+                                        the an array.</h4>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -166,7 +173,8 @@
                                     <a href='https://github.com/dallinmajor/liri-node-app'><i class="fa fa-github"
                                             style="font-size: 1.5rem"></i></a>
                                     <h4><a href="#">Giphy Cartoons</a></h4>
-                                    <p>This is a simple giphy search page. You can create buttons of your favorite cartoons that when clicked displays giphys of that cartoon.
+                                    <p>This is a simple giphy search page. You can create buttons of your favorite
+                                        cartoons that when clicked displays giphys of that cartoon.
                                     </p>
                                 </div>
                             </div>
@@ -197,10 +205,11 @@
                             <div class="post-hover text-center">
                                 <div class="inside">
                                     <span class="date">20 May 2018</span>
-                                    <a href='https://github.com/dallinmajor/TriviaGame'><i class="fa fa-github"
-                                        style="font-size: 1.5rem"></i></a>
+                                    <a href='https://github.com/dallinmajor/TriviaGame'><i class="fa fa-github" style="font-size: 1.5rem"></i></a>
                                     <h4><a href="https://dallinmajor.github.io/TriviaGame/">WWII trivia</a></h4>
-                                    <p>This is a World War 2 Trivia game I made using Javascript Timers. You get asked a series of questions and are given a time limit on each. When you are done you are graded and given a percentage.</p>
+                                    <p>This is a World War 2 Trivia game I made using Javascript Timers. You get asked
+                                        a series of questions and are given a time limit on each. When you are done you
+                                        are graded and given a percentage.</p>
                                 </div>
                             </div>
                         </div>
@@ -225,10 +234,13 @@
             </div>
         </div>
     </div>
-    <div class="blog">
-        .
+    <div class="blog-container container">
+        <div class="blog-title">
+            <strong>Blog</strong>
+        </div>
+        <div class="blog">
+        </div>
     </div>
-
     <!-- FOOTER -->
     <footer class="site-footer">
         <div class="container">
@@ -254,6 +266,7 @@
     <script src="js/vendor/jquery-1.10.2.min.js"></script>
     <script src="js/min/plugins.min.js"></script>
     <script src="js/min/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
     <!-- Preloader -->
     <script type="text/javascript">
@@ -262,6 +275,50 @@
             $('#loader').fadeOut(); // will first fade out the loading animation
             $('#loader-wrapper').delay(350).fadeOut('slow'); // will fade out the white DIV that covers the website.
             $('body').delay(350).css({ 'overflow-y': 'visible' });
+
+            function splitParagraphs(array) {
+                console.log(array);
+
+            }
+
+            function postBlog(post) {
+
+                var relativeTime = moment(post.date, "YYYYMMDD").fromNow();
+                var date = moment(post.date, "YYYYMMDD").format('L');
+                var text = '';
+
+                post.text.forEach(function (paragraph) {
+                    text = text + `<p>${paragraph}</p>`;
+                });
+
+                var post = `
+                <div class="card">
+                        <div class="card-header">
+                                ${date} 
+                                <p>
+                                    <div class="blockquote-footer">${relativeTime}</div>
+                                </p>
+                        </div>
+                    <div class="card-body">
+                            ${text}
+                    </div>
+                </div>`
+
+                $(post).prepend(text);
+
+                $('.blog').append(post);
+            };
+
+            postBlog(
+                {
+                    text: ["So, I've decided to put a blog on my portfolio page for a couple reasons. First, it's nice to have something that tracks my progress in a meaningful way. Being able to talk about and record the coding challenges I've faced and what I did to over come them is going to be a nice thing. Second, one of the problems of coding is that 95% of your work goes unseeen. And so me, an eager and hard working young web developer, has a hard time showing what I'm capable of. Plus I am learning like crazy and that isn't always represented in the current hosted projects. This is mainly due to the fact that for every project posted here, there are about 10 projects that aren't. And THIS is because I am scrambling like mad to find where to put my time and energy.",
+                        "Now, a little bit about me. My father, Darren, is a programmer. His brother, Drew (Major), is also a programmer and basically wrote the code that started Novell. My brother, Nick, is a web developer and digital nomad. And my brother-in-law is a CS major at BYU. Despite the pedigree neither my brother nor I were all that intrested in code. What led my brother to code? You'd have to ask him. But as for me, I was brought to it when my natural interests and aptitudes met my brother-in-law. He took a look at some of my interests (tabletop RPGs, big boardgames, riddles, puzzles and writing my own game systems) and he thought. 'Hey this guy would love coding!'. So I learned some launguages, enrolled in a bootcamp and here we are today.",
+                        "It was a big challenge keeping up my coding skills after the bootcamp. I was finding little bits of time here and there, but It's hard with a full-time job, a wife, a 21 month old and on top of that living with in-laws. I have the best in-laws, but simply not having your own space has it's own complications. So to solve the time issue, I worked really hard to become a morning person. Let me make this clear. I have never ever in my life been know to be a morning person. I have tried, but failed. So this is HUGE. The recipe is pretty simple, but easier said than done. Go to bed early (between 9:30 - 10:30), have your alarm out of reach (meaning you have to get up to turn it off) a tall glass of cold water next to the alarm and a project you are excited to work on.",
+                        "My goals now? Code as much as I can. Find a sick employer who sees my value. And keep going!"],
+                    date: '20181224'
+                }
+            );
+
         })
             //]]>
     </script>

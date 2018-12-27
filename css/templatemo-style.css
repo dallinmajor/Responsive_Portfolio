@@ -95,6 +95,10 @@ sup {
     top: -.5em;
 }
 
+.card p {
+    margin-bottom: 5px;
+}
+
 sub {
     bottom: -.25em;
 }
@@ -102,6 +106,10 @@ sub {
 img {
     border: 0;
     -ms-interpolation-mode: bicubic;
+}
+
+.card {
+    margin-bottom: 40px;
 }
 
 button,input,select,textarea {
@@ -257,6 +265,27 @@ h5 {
         text-align: center;
         display: block;
     }
+}
+
+.blog-title{
+    font-size: 35px;
+    margin-bottom: 30px;
+    opacity: .5;
+}
+
+.blog-container {
+    position: relative;
+    z-index: 100;
+}
+
+.blog-post {
+    font-size: 16px;
+}
+
+.blockquote-footer {
+    font-size: 14px;
+    color: white;
+    opacity: .5;
 }
 
 .button {
