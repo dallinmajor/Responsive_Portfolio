@@ -381,46 +381,18 @@
 
                 $(post).prepend(text);
 
-                $('.blog').append(post);
+                $('.blog').prepend(post);
             };
 
-            postBlog(
-                {
-                    text: ["I think one of the most important things about learning something new is knowing the right questions to ask. There’s an inherent challenge in it because you don’t know what you don’t know, and that sucks. But one of my favorite things by far has been learning something that gives me questions. It’s like the question is as valuable as the answer. Each door I open leads to more doors and bigger rooms. Like a bicycle with two pedals: Understanding and Curiosity; each one circling back to one another.",
-                        "So we’ve started out this new year right by being crazy sick. It feels like an elephant is sitting on my sinuses. I did not do much coding at first, but I was able to cowboy up and get something done. I set out to solve my API hosting problem. I first went to Youtube and Google looking up how to give files listed in .gitignore to Heroku; I didn’t have any luck. Probably because that’s not how people do it. My success came when I looked up how to get an mlab app hosted on heroku. That led me to learn about heroku’s built in config file, which led me to use the command line to set local variables in Heroku. Now, not only is my API done and hosted, but secure. I have my mlab connection stored in a variable as well as an API Key I created to keep random people from using my API. This has opened up a lot of doors for me. First, I want to learn about how to write really secure apps, second, there's a lot to learn about heroku and hosting,  and third, I am excited to use what i’ve learned in future projects.",
-                        "Now that the API is done, I’ll learn how to do similar stuff for Github Pages so I can keep my key secure and have my portfolio pull from my API. So I’ll keep you updated. Watch out 2019, Dallin’s going to be gaining some serious skill!"],
-                    date: "20190101"
-                }
-            )
 
-            postBlog(
-                {
-                    text: ["Alright. The API is done in a sense. I had an idea on how to secure it, but am figuring out that i really don't know what i'm doing in that department. I hide my db info and an API key that I created in a file that is in my .gitignore file. The problem is that if it is in my .gitignore then heroku can't see it. So now I am having hosting problems. I have work at 6:00 again tommorrow so I can't wake up early and solve it. I'll probably figure it out during my lunch break. But if I can get it going all I'll have left is to write, into my portfolio, code that gets all the blog posts from my API. So, let's see how that goes"],
-                    date: "20181230"
-                }
-            )
-
-            postBlog(
-                {
-                    text: ["I am making an API to handle my blog posts. I never planned on hard coding everything, but I also thought that it would be nice to blog about building the api that will handle the blog posts... I'm literally going bare minimum on this. I don't want to spend too much time. So the plan is to write up an API, host it on Heroku, and handle all my posts with postman. I am not going to bother building an UI for myself when I can just skip the middle man. However, I have never done anything like this before. Nor do I know if this is even something that is totally dumb. But it solves my problem in a way that I know how, and I'm good with that. Pick you battles and what not. So I have created the basics for it, but I havn't had as much time as i'd like. Recovering from holiday is no joke. But I am determined to get back on the horse and get coding every morning again. Till next time", "Dallin Out"],
-                    date: "20181228"
-                }
-            )
-
-            postBlog(
-                {
-                    text: ["So, I've decided to put a blog on my portfolio page for a couple reasons. First, it's nice to have something that tracks my progress in a meaningful way. Being able to talk about and record the coding challenges I've faced and what I did to over come them is going to be a nice thing. Second, one of the problems of coding is that 95% of your work goes unseeen. And so me, an eager and hard working young web developer, has a hard time showing what I'm capable of. Plus I am learning like crazy and that isn't always represented in the current hosted projects. This is mainly due to the fact that for every project posted here, there are about 10 projects that aren't. And THIS is because I am scrambling like mad to find where to put my time and energy.",
-                        "Now, a little bit about me. My father, Darren, is a programmer. His brother, Drew (Major), is also a programmer and basically wrote the code that started Novell. My brother, Nick, is a web developer and digital nomad. And my brother-in-law is a CS major at BYU. Despite the pedigree neither my brother nor I were all that intrested in code. What led my brother to code? You'd have to ask him. But as for me, I was brought to it when my natural interests and aptitudes met my brother-in-law. He took a look at some of my interests (tabletop RPGs, big boardgames, riddles, puzzles and writing my own game systems) and he thought. 'Hey this guy would love coding!'. So I learned some launguages, enrolled in a bootcamp and here we are today.",
-                        "It was a big challenge keeping up my coding skills after the bootcamp. I was finding little bits of time here and there, but It's hard with a full-time job, a wife, a 21 month old and on top of that living with in-laws. I have the best in-laws, but simply not having your own space has it's own complications. So to solve the time issue, I worked really hard to become a morning person. Let me make this clear. I have never ever in my life been know to be a morning person. I have tried, but failed. So this is HUGE. The recipe is pretty simple, but easier said than done. Go to bed early (between 9:30 - 10:30), have your alarm out of reach (meaning you have to get up to turn it off) a tall glass of cold water next to the alarm and a project you are excited to work on.",
-                        "My goals now? Code as much as I can. Find a sick employer who sees my value. And keep going!"],
-                    date: '20181226'
-                }
-            );
-
-
-
-            // postBlog({text: [""], date : "20181227"})
-
+            $.ajax({
+                url: "https://dallinsblog.herokuapp.com/",
+                method: "GET"
+            }).then(function(blogPosts) {
+                blogPosts.forEach(function(post){
+                    postBlog(post);
+                })
+            });
         })
             //]]>
     </script>
